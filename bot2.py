@@ -59,7 +59,7 @@ async def on_ready():
     client.sql_conn = await aiosqlite.connect(db_p)
     for exten in extensions:
         try_load_extension(exten)
-    await client.change_presence(status=discord.Status.online, activity=discord.Game("Leaking salc\'s base in progress"))
+    await client.change_presence(status=discord.Status.online, activity=discord.Game("Pinging @everyone"))
     logger.info(f"{client.user} has connected to Discord!")
 
 
