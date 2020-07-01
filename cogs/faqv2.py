@@ -48,7 +48,7 @@ class Faq(commands.Cog):
 
 
     @commands.group(name="faq")
-    @commands.has_any_role("Member", "Private Chat Access", "OG Role That Has No Purpose", "Moderator", "Administrator")
+    @commands.has_any_role("Member", "Private Chat Access", "Moderator", "Administrator")
     async def faq(self, ctx):
         if ctx.invoked_subcommand is None:
             msg = "FAQ Commands:\n```md"
@@ -80,6 +80,7 @@ class Faq(commands.Cog):
                 #print(re.search(item.reg, content))
                 if re.search(item.reg, content) and (ctx.channel.id in item.channels):
                     await ctx.channel.send(item.content, delete_after=20)
+                    automation_logger.info(f"FAQ RegEx triggered by user {ctx.author} ({ctx.author.id})")
                     if item.ch == "packchannels":
                         await ctx.add_reaction("\U00002705")
                     return
